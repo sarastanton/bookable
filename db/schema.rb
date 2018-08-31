@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_08_31_035753) do
   end
 
   create_table "books", force: :cascade do |t|
+    t.string "title"
     t.string "author"
     t.string "genre"
     t.integer "page_count"
