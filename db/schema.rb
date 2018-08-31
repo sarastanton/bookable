@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2018_08_31_035753) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.string "author"
-    t.string "genre"
+    t.string "author_id"
+    t.string "genre_id"
     t.integer "page_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
