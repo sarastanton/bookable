@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_02_062954) do
+ActiveRecord::Schema.define(version: 2018_09_02_061747) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -23,11 +23,9 @@ ActiveRecord::Schema.define(version: 2018_09_02_062954) do
     t.string "author_id"
     t.string "genre_id"
     t.integer "page_count"
+    t.boolean "read_status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rating"
-    t.string "review"
-    t.boolean "read_status"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -36,17 +34,33 @@ ActiveRecord::Schema.define(version: 2018_09_02_062954) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.index ["book_id"], name: "index_ratings_on_book_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "user_books", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
+    t.index ["book_id"], name: "index_user_books_on_book_id"
+    t.index ["user_id"], name: "index_user_books_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.integer "pages_read", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pages_read"
   end
 
 end

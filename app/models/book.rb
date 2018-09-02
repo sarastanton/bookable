@@ -1,5 +1,4 @@
 class Book < ApplicationRecord
-
   belongs_to :author
   belongs_to :genre
 
@@ -19,6 +18,5 @@ class Book < ApplicationRecord
     end
     rating
   end
-
 
 end
