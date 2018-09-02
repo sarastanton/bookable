@@ -30,8 +30,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
 
 gem 'omniauth'
-gem 'omniauth-goodreads'
+# gem 'omniauth-goodreads2'
+# gem 'multi_xml'
 gem 'dotenv-rails'
+
+gem 'openssl', '>=2.0.3'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
