@@ -1,1 +1,9 @@
-<h1> This is the book index page </h1>
+<h1> All Books </h1>
+
+<%= @books.each do |book| %>
+  <ul>
+    <li> <% book.title %> by <% book.author %> </li>
+    <li> Genre: <% book.genre %> </li>
+    <li> Page count: <% book.page_count %>
+    <li> Average user rating: UNDER CONSTRUCTION </li>
+    <li> User reviews: UNDER CONTRUCTION </li> 
