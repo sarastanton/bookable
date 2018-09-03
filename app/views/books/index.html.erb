@@ -10,10 +10,12 @@
 
   <% @books.each do |book| %>
   <tr>
-    <td> <%= link_to book.title, book_path(book) %> by <%= book.author.name %> </td>
-    <td> Genre: <%= book.genre.name %> </td>
-    <td> Page count: <%= book.page_count %> </td>
-    <td> Average user rating: UNDER CONSTRUCTION </td>
-    <td> User reviews: UNDER CONTRUCTION </td>
+    <td> <%= link_to book.title, book_path(book) %> </td>
+    <td> <%= book.author.name %> </td>
+    <td> <%= book.genre.name %> </td>
+    <td> <%= book.page_count %> </td>
+    <td> UNDER CONSTRUCTION </td>
+    <td> UNDER CONTRUCTION </td>
   </tr>
   <% end %>
+</table>

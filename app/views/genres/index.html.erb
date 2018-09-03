@@ -1,1 +1,13 @@
-<h1> This is the genre index page </h1>
+<h1> All Genres </h1>
+
+<table class="table">
+  <th> Genre </th>
+  <th> Number of Books </th>
+
+  <% @genres.each do |genre| %>
+  <tr>
+    <td> <%= link_to genre.name, genre_path(genre) %> </td>
+    <td> <%= genre.books.count %> </td>
+  </tr>
+  <% end %>
+</table>
