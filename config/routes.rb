@@ -2,8 +2,14 @@ Rails.application.routes.draw do
 
   resources :genres
   resources :users
-  resources :authors
+
+  resources :authors do
+    resources :books #only _____
+  end
+
   resources :books
+  resources :ratings
+  resources :reviews
 
 #double check this
   get '/login' => 'sessions#new'

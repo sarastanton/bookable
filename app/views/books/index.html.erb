@@ -1,9 +1,19 @@
 <h1> All Books </h1>
 
-<%= @books.each do |book| %>
-  <ul>
-    <li> <% book.title %> by <% book.author %> </li>
-    <li> Genre: <% book.genre %> </li>
-    <li> Page count: <% book.page_count %>
-    <li> Average user rating: UNDER CONSTRUCTION </li>
-    <li> User reviews: UNDER CONTRUCTION </li> 
+<table class="table">
+  <th> Book </th>
+  <th> Author </th>
+  <th> Genre </th>
+  <th> Page Count </th>
+  <th> Average Ratings </th>
+  <th> Number of Reviews </th>
+
+  <% @books.each do |book| %>
+  <tr>
+    <td> <%= link_to book.title, book_path(book) %> by <%= book.author.name %> </td>
+    <td> Genre: <%= book.genre.name %> </td>
+    <td> Page count: <%= book.page_count %> </td>
+    <td> Average user rating: UNDER CONSTRUCTION </td>
+    <td> User reviews: UNDER CONTRUCTION </td>
+  </tr>
+  <% end %>

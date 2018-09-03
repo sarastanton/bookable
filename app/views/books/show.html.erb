@@ -1,1 +1,4 @@
-<h1> This is the book show page </h1>
+<h1> <%= @book.title %> by <%= @book.author.name %> </h1>
+
+<p> Genre: <%= @book.genre.name %> </p>
+<p> <%= @book.page_count %> pages </p>
