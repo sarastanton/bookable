@@ -1,1 +1,21 @@
-<h1> This is the author show page </h1>
+<h1> <%= @author.name %> </h1>
+
+<h4> <%= @author.name %>'s books: </h4>
+
+<table class="table">
+  <th> Title </th>
+  <th> Genre </th>
+  <th> Page Count </th>
+  <th> Average Ratings </th>
+  <th> Number of Reviews </th>
+
+  <% @author.books.each do |book| %>
+  <tr>
+    <td> <%= link_to book.title, book_path(book) %> </td>
+    <td> <%= link_to book.genre.name, genre_path(book.genre) %> </td>
+    <td> <%= book.page_count %> </td>
+    <td> UNDER CONSTRUCTION </td>
+    <td> UNDER CONTRUCTION </td>
+  </tr>
+  <% end %>
+</table>
