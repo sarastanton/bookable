@@ -45,7 +45,7 @@ class Book < ApplicationRecord
 
   def review_count
     if Review.find_by(book_id: self.id)
-      Review.find_by(book_id: self.id).count
+      self.reviews.count
     else
       "0"
     end

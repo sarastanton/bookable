@@ -9,7 +9,8 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    @reviews = Review.where(book_id: params[:book_id])
+    @book = Book.find(params[:book_id])
   end
 
   def show

@@ -8,13 +8,14 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :books do
-      resources :reviews
-      resources :ratings
       resources :read_statuses
     end
   end
-  # possibly nest under user, and/or add read_status? Or add separate user/book nest for use with read_status?
 
+  resources :books do
+    resources :reviews
+    resources :ratings
+  end
 
 
 #double check this

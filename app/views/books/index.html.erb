@@ -16,7 +16,7 @@
     <td> <%= link_to book.genre.name, genre_path(book.genre) %> </td>
     <td> <%= book.page_count %> </td>
     <td> <%= book.average_rating %> </td>
-    <td> <%= book.review_count %> </td>
+    <td> <%= link_to book.review_count, book_reviews_path(book) %> </td>
     <td> <%= button_to "Add to My Books", user_books_path(@user), :method => :get %> </td>
   </tr>
   <% end %>
