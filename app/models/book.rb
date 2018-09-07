@@ -31,14 +31,12 @@ class Book < ApplicationRecord
     book.read_status == true ? book.update(read_status: false) : book.update(read_status: true)
   end
 
-  def average_rating(book)
-    rating = nil
-    User.all.each do |user|
-      user.books.each do |book|
-        rating += book.rating
-      end
+  def average_rating
+    av_rating = 0
+    self.ratings.each do |rating|
+      av_rating += rating.value
     end
-    rating
+    av_rating / self.ratings.count
   end
 
 end
