@@ -2,6 +2,12 @@ class Book < ApplicationRecord
   belongs_to :author
   belongs_to :genre
 
+  has_many :ratings
+  has_many :books, through: :ratings
+
+  has_many :reviews
+  has_many :books, through: :reviews
+
   has_many :user_books
   has_many :users, through: :user_books
 

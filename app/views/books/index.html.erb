@@ -5,17 +5,19 @@
   <th> Author </th>
   <th> Genre </th>
   <th> Page Count </th>
-  <th> Average Ratings </th>
+  <th> Average Rating </th>
   <th> Number of Reviews </th>
+  <th>  </th>
 
   <% @books.each do |book| %>
   <tr>
     <td> <%= link_to book.title, book_path(book) %> </td>
-    <td> <%= book.author.name %> </td>
-    <td> <%= book.genre.name %> </td>
+    <td> <%= link_to book.author.name, author_path(book.author) %> </td>
+    <td> <%= link_to book.genre.name, genre_path(book.genre) %> </td>
     <td> <%= book.page_count %> </td>
-    <td> UNDER CONSTRUCTION </td>
-    <td> UNDER CONTRUCTION </td>
+    <td> COMING SOON </td>
+    <td> COMING SOON </td>
+    <td> <%= button_to "Add to My Books", user_books_path(@user), :method => :get %> </td>
   </tr>
   <% end %>
 </table>
