@@ -32,11 +32,23 @@ class Book < ApplicationRecord
   end
 
   def average_rating
-    av_rating = 0
-    self.ratings.each do |rating|
-      av_rating += rating.value
+    if Rating.find_by(book_id: self.id)
+      av_rating = 0
+      self.ratings.each do |rating|
+        av_rating += rating.value
+      end
+      av_rating / self.ratings.count
+    else
+      ""
     end
-    av_rating / self.ratings.count
+  end
+
+  def review_count
+    if Review.find_by(book_id: self.id)
+      Review.find_by(book_id: self.id).count
+    else
+      "0"
+    end
   end
 
 end
