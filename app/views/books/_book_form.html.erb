@@ -1,0 +1,29 @@
+<%= form_for :book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br />
+  <br />
+  <%= f.label :author, "Author (enter or choose from drop list)" %>
+  <%= f.text_field :author, list: "authors_autocomplete" %>
+    <datalist id="authors_autocomplete">
+      <% Author.all.each do |author| %>
+        <option value=" <%= author.name %>" >
+      <% end %>
+    </datalist>
+  <br />
+  <br />
+  <%= f.label :genre, "Genre (enter or choose from drop list)" %>
+  <%= f.text_field :genre, list: "genres_autocomplete" %>
+    <datalist id="genres_autocomplete">
+      <% Genre.all.each do |genre| %>
+        <option value=" <%= genre.name %>" >
+      <% end %>
+    </datalist>
+  <br />
+  <br />
+  <%= f.label :page_count %>
+  <%= f.text_field :page_count %>
+  <br />
+  <br />
+  <%= f.submit %>
+<% end %>

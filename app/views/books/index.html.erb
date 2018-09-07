@@ -1,7 +1,7 @@
 <h1> All Books </h1>
 
 <table class="table">
-  <th> Book </th>
+  <th> Title </th>
   <th> Author </th>
   <th> Genre </th>
   <th> Page Count </th>
@@ -19,3 +19,8 @@
   </tr>
   <% end %>
 </table>
+
+<br />
+<br />
+
+<%= button_to "Add New Book", new_book_path, :method => :get %>

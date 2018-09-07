@@ -2,14 +2,18 @@ Rails.application.routes.draw do
 
   resources :genres
   resources :users
+  resources :books
+  resources :authors
 
-  resources :authors do
-    resources :books #only _____
+  resources :books do
+    resources :reviews
   end
 
-  resources :books
-  resources :ratings
-  resources :reviews
+  resources :books do
+    resources :ratings
+  end
+
+
 
 #double check this
   get '/login' => 'sessions#new'

@@ -1,1 +1,3 @@
-<h1> This is the new book page </h1>
+<h1> Add a New Book: </h1>
+
+<%= render partial: 'book_form', locals: {book: @book, author: @book.author, page_count: @book.page_count, genre: @book.genre} %>
