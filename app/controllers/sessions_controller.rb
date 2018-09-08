@@ -6,22 +6,22 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
-    if params[:user] == ""
-      @user = User.find_by(params[:user][:username])
-      if @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to root_path
-      else
-        render 'login'
-      end
-    else
+    # binding.pry
+    # if params[:user] != "" 
+    #   @user = User.find_by(params[:user][:username])
+    #   if @user.authenticate(params[:user][:password])
+    #     session[:user_id] = @user.id
+    #     redirect_to root_path
+    #   else
+    #     render 'login'
+    #   end
+    # else
       @user = User.find_or_create_by(uid: auth['uid']) do |u|
         u.username = auth['info']['name']
       end
       session[:user_id] = @user.id
       render 'welcome/home'
-    end
+    # end
   end
 
   def destroy
