@@ -34,6 +34,7 @@ gem 'omniauth-oauth'
 gem 'omniauth-goodreads2'
 gem 'multi_xml'
 gem 'dotenv-rails'
+gem 'thin'
 
 gem 'openssl', '>=2.0.3'
 
