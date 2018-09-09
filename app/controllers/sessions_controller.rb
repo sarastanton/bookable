@@ -6,25 +6,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
-    render text: request.env['omniauth.auth'].to_yaml
-
-    # binding.pry
-    # if params[:user] != ""
-    #   @user = User.find_by(params[:user][:username])
-    #   if @user.authenticate(params[:user][:password])
-    #     session[:user_id] = @user.id
-    #     redirect_to root_path
-    #   else
-    #     render 'login'
-    #   end
-    # else
-      # @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      #   u.username = auth['info']['name']
-      # end
-      # session[:user_id] = @user.id
-      # render 'welcome/home'
-    # end
+    if params[:user][:username] #user logs in with existing Bookable account
+      @user = User.find_by(username: params[:user][:username])
+      if @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        redirect_to root_path
+      else
+        render 'login'
+      end
+    else #user logs in with Goodreads 
+      @user = User.find_or_create_by(uid: auth['uid']) do |u|
+        u.username = auth['info']['name']
+      end
+      session[:user_id] = @user.id
+      redirect_to root_path
+    end
   end
 
   def destroy
