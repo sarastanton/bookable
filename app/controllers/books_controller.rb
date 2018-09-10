@@ -17,8 +17,13 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
-    @user = User.find_by_id(session[:user_id])
+    if params[:my_books]
+      @books = my_books
+      render 'my_books'
+    else
+      @books = Book.all
+      @user = User.find_by_id(session[:user_id])
+    end
   end
 
   def show

@@ -9,6 +9,7 @@
 <ul>
   <% @reviews.each do |review| %>
     <li> <%= review.user.username%> wrote: "<%= review.content %>" </li>
+    <br />
   <% end %>
 </ul>
 

@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # bootstrap
 gem 'bootstrap-sass'
+gem 'compass-rails', '~> 3.0.2'
 
 gem 'pry'
 
