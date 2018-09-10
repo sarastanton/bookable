@@ -1,12 +1,10 @@
-<h1> <%= @author.name %> </h1>
-
-<h4> <%= @author.name %>'s books: </h4>
-
+<h1> <%= @author.name %>'s books </h1>
+<br />
 <table class="table">
   <th> Title </th>
   <th> Genre </th>
   <th> Page Count </th>
-  <th> Average Ratings </th>
+  <th> Average Rating </th>
   <th> Number of Reviews </th>
 
   <% @author.books.each do |book| %>
@@ -14,8 +12,8 @@
     <td> <%= link_to book.title, book_path(book) %> </td>
     <td> <%= link_to book.genre.name, genre_path(book.genre) %> </td>
     <td> <%= book.page_count %> </td>
-    <td> UNDER CONSTRUCTION </td>
-    <td> UNDER CONTRUCTION </td>
+    <td> <%= book.average_rating %> </td>
+    <td> <%= book.review_count %> </td>
   </tr>
   <% end %>
 </table>

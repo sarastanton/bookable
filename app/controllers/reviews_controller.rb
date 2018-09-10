@@ -1,19 +1,23 @@
 class ReviewsController < ApplicationController
 
   def new
-    @review = Review.new
     @book = Book.find(params[:book_id])
+    # @book_id = @book.id
+    # @user_id = helpers.current_user.id
+    @review = Review.new(book_id: params[:book_id], user_id: helpers.current_user.id)
+    binding.pry
   end
 
   def create
-    @book_id = params[:book_id]
-    @user_id = helpers.current_user.id
+    @book = Book.find(params[:book_id])
+    @user = User.find(helpers.current_user.id)
     @review = Review.create(review_params)
     binding.pry
-    # redirect_to book_reviews_path(@book)
+    redirect_to book_reviews_path(@book)
   end
 
   def index
+    @user = User.find(helpers.current_user.id)
     @reviews = Review.where(book_id: params[:book_id])
     @book = Book.find(params[:book_id])
   end

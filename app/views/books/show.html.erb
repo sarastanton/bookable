@@ -1,14 +1,25 @@
 <h1> <%= @book.title %> by <%= @book.author.name %> </h1>
 
-<h4> <%= @book.genre.name %> </h4>
-<h4> <%= @book.page_count %> pages </h4>
+<br />
 
-<h4> Average rating: </h4>
-<p> <%= @book.average_rating %> </p>
+<h4> Genre: </h4> <%= @book.genre.name %>
 
-<h4> User Reviews: </h4>
-<p> <%= link_to @book.review_count, book_reviews_path(@book) %> </p>
+<br />
+<br />
 
+<h4> Page count: </h4> <%= @book.page_count %>
+
+<br />
+<br />
+
+<h4> Average rating: </h4> <%= @book.average_rating %>
+
+<br />
+<br />
+
+<h4> User Reviews: </h4> <%= link_to @book.review_count, book_reviews_path(@book) %>
+
+<br />
 <br />
 <br />
 

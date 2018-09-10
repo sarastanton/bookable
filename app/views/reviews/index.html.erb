@@ -1,5 +1,11 @@
 <h1> Reviews for <%= @book.title %> </h1>
 
+<br />
+ <% if @book.review_count.to_i == 0 %>
+  <%= @book.title %> does not have any reviews yet. Be the first to review this book!
+ <% end %>
+
+
 <ul>
   <% @reviews.each do |review| %>
     <li> <%= review.user.username%> wrote: "<%= review.content %>" </li>
