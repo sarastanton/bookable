@@ -3,13 +3,16 @@ class Book < ApplicationRecord
   belongs_to :genre
 
   has_many :ratings
-  has_many :books, through: :ratings
+  has_many :users, through: :ratings
 
   has_many :reviews
-  has_many :books, through: :reviews
+  has_many :users, through: :reviews
 
   has_many :user_books
   has_many :users, through: :user_books
+
+  has_many :read_statuses
+  has_many :users, through: :read_statuses
 
   def author_name=(name)
     self.author = Author.find_or_create_by(name: name)
@@ -50,5 +53,15 @@ class Book < ApplicationRecord
       "0"
     end
   end
+
+  def add_to_my_books(user)
+    user.books << self
+  end
+
+  def mark_as_read
+    @read_status = ReadStatus.find_or_create_by(book_id: self.id, user_id: helpers.current_user.id)
+    @read_status.value = true
+  end
+
 
 end
