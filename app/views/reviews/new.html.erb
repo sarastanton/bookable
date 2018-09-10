@@ -1,0 +1,7 @@
+<h2> Add a review for <%= @book.title %>: </h2>
+
+<%= form_for ([@book, @review]) do |f| %>
+  <%= f.text_area :content, placeholder: "Enter review here" %>
+  <br />
+  <%= f.submit "Save review" %>
+<% end %>

@@ -4,10 +4,10 @@
 <h4> <%= @book.page_count %> pages </h4>
 
 <h4> Average rating: </h4>
-<p> AVERAGE RATING TO GO HERE </p>
+<p> <%= @book.average_rating %> </p>
 
 <h4> User Reviews: </h4>
-<p> USER REVIEWS TO GO HERE </p>
+<p> <%= link_to @book.review_count, book_reviews_path(@book) %> </p>
 
 <br />
 <br />

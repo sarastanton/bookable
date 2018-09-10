@@ -39,7 +39,7 @@ class Book < ApplicationRecord
       end
       av_rating / self.ratings.count
     else
-      ""
+      "none"
     end
   end
 
