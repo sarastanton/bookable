@@ -56,11 +56,15 @@ class Book < ApplicationRecord
 
   def add_to_my_books(user)
     user.books << self
+    @read_status = ReadStatus.find_or_create_by(book_id: self.id, user_id: user.id)
   end
 
-  def mark_as_read
-    @read_status = ReadStatus.find_or_create_by(book_id: self.id, user_id: helpers.current_user.id)
+  def mark_as_read(user)
+    @read_status = ReadStatus.find_or_create_by(book_id: self.id, user_id: user.id)
     @read_status.value = true
+    @read_status.save
+    user.update(pages_read: user.pages_read + self.page_count)
+    user.save
   end
 
 
