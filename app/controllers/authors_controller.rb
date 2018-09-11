@@ -13,7 +13,7 @@ class AuthorsController < ApplicationController
   end
 
   def index
-    @authors = Author.all
+    @authors = Author.all.sort_by(&:name)
   end
 
   def show

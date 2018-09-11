@@ -17,12 +17,12 @@ class BooksController < ApplicationController
   end
 
   def index
+    @user = User.find_by_id(session[:user_id])
     if params[:my_books]
-      @books = my_books
+      @books = @user.books.sort_by(&:title)
       render 'my_books'
     else
-      @books = Book.all
-      @user = User.find_by_id(session[:user_id])
+      @books = Book.all.sort_by(&:title)
     end
   end
 

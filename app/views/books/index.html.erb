@@ -17,7 +17,7 @@
     <td> <%= book.page_count %> </td>
     <td> <%= book.average_rating %> </td>
     <td> <%= link_to book.review_count, book_reviews_path(book) %> </td>
-    <td> <%= button_to "Add to My Books", user_books_path(@user), :method => :get %> </td>
+    <td> <%= button_to "Add to My Books", books_path, :method => :get %> </td>
   </tr>
   <% end %>
 </table>
