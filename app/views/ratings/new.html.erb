@@ -1,27 +1,33 @@
 <h1>My Rating for <%= @book.title %>:</h1>
 
 
+
+<!-- source: https://codepen.io/lsirivong/pen/ekBxI -->
+
 <%= form_for [@book, @rating] do |f| %>
   <fieldset>
     <span class="star-cb-group">
-      <%= f.hidden_field :user_id %>
-      <%= f.hidden_field :book_id %>
-      <%= f.label :value, "5", :value => 'rating-5' %>
+      <%= f.label :value, :id => 'rating-5', :value => 5 %>
       <%= f.radio_button :value, 'rating-5' %>
-      <%= f.label :value, "4", :value => 'rating-4' %>
+
+      <%= f.label :value, :id => 'rating-4', :value => 4 %>
       <%= f.radio_button :value, 'rating-4' %>
-      <%= f.label :value, "3", :value => 'rating-3' %>
+
+      <%= f.label :value, :id => 'rating-3', :value => 3 %>
       <%= f.radio_button :value, 'rating-3' %>
-      <%= f.label :value, "2", :value => 'rating-2' %>
+
+      <%= f.label :value, :id => 'rating-2', :value => 2 %>
       <%= f.radio_button :value, 'rating-2' %>
-      <%= f.label :value, "1", :value => 'rating-1' %>
+
+      <%= f.label :value, :id => 'rating-1', :value => 1 %>
       <%= f.radio_button :value, 'rating-1' %>
-      <%= f.label :value, "0", :value => 'rating-0' %>
-      <%= f.radio_button :value, 'rating-0', {:class => "star-cb-clear"} %>
+      
+      <%= f.label :value, :id => 'rating-0', :value => 0 %>
+      <%= f.radio_button :value, 'rating-0', class: "star-cb-clear" %>
     </span>
   </fieldset>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :book_id %>
   <br />
   <%= f.submit "Save Rating" %>
 <% end %>
-
-<!-- source: https://codepen.io/lsirivong/pen/ekBxI -->
