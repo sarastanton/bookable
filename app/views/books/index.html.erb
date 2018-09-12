@@ -17,7 +17,17 @@
     <td> <%= book.page_count %> </td>
     <td> <%= book.average_rating %> </td>
     <td> <%= link_to book.review_count, book_reviews_path(book) %> </td>
-    <td> <%= button_to "Add to My Books", books_path, :method => :get %> </td>
+    <td>
+      <% if @user.books.include?(book) %>
+        <%= link_to "In My Books", user_path(@user) %>
+      <% else %>
+        <%= form_tag(books_path, method: :get) do %>
+          <%= hidden_field_tag "add_to_my_books" %>
+          <%= hidden_field_tag "book_id", book.id %>
+          <%= submit_tag ("Add to My Books") %>
+        <% end %>
+      <% end %>
+    </td>
   </tr>
   <% end %>
 </table>

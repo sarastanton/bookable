@@ -18,11 +18,11 @@ class BooksController < ApplicationController
 
   def index
     @user = User.find_by_id(session[:user_id])
-    if params[:my_books]
-      @books = @user.books.sort_by(&:title)
-      render 'my_books'
-    else
-      @books = Book.all.sort_by(&:title)
+    @books = Book.all.sort_by(&:title)
+    if params[:add_to_my_books]
+      @book = Book.find(params[:book_id])
+      @book.add_to_my_books(@user)
+      render 'index'
     end
   end
 
