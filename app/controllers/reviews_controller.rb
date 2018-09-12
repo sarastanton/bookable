@@ -12,7 +12,8 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
     @user = User.find(helpers.current_user.id)
     @review = Review.create(review_params)
-    binding.pry
+    @book.add_to_my_books(@user)
+    @book.mark_as_read(@user)
     redirect_to book_reviews_path(@book)
   end
 

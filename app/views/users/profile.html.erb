@@ -1,6 +1,56 @@
 <h1> <%= @user.username %> </h1>
 
-<h2> <%= @user.pages_read %> pages read so far </h2>
+<h3> <%= @user.pages_read %> pages read so far </h3>
 <br />
 
-See my books (ADD LINK)
+<h2> Books I want to read: </h2>
+<table class="table">
+  <th> Book </th>
+  <th> Author </th>
+  <th> Genre </th>
+  <th> Page Count </th>
+  <th> Mark as Read? </th>
+
+  <% @user.books.each do |book| %>
+    <% book.read_statuses.each do |read_status| %>
+      <% if read_status.user_id == @user.id && read_status.value == false %>
+        <tr>
+          <td> <%= link_to book.title, book_path(book) %> </td>
+          <td> <%= link_to book.author.name, author_path(book.author) %> </td>
+          <td> <%= link_to book.genre.name, genre_path(book.genre) %> </td>
+          <td> <%= book.page_count %> </td>
+          <td> ADD BUTTON TO MARK AS READ </td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+<br />
+
+<h4> Books I Have Read: </h4>
+
+<table class="table">
+  <th> Book </th>
+  <th> Author </th>
+  <th> Genre </th>
+  <th> Page Count </th>
+  <th> My Rating </th>
+  <th> My Review </th>
+
+  <% @user.books.each do |book| %>
+    <% book.read_statuses.each do |read_status| %>
+      <% if read_status.user_id == @user.id && read_status.value == true %>
+        <tr>
+          <td> <%= link_to book.title, book_path(book) %> </td>
+          <td> <%= link_to book.author.name, author_path(book.author) %> </td>
+          <td> <%= link_to book.genre.name, genre_path(book.genre) %> </td>
+          <td> <%= book.page_count %> </td>
+          <td> UNDER CONSTRUCTION </td>
+          <td> UNDER CONTRUCTION </td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+</table>

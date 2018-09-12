@@ -30,9 +30,9 @@ class Book < ApplicationRecord
     self.genre ? self.genre.name : nil
   end
 
-  def read(book)
-    book.read_status == true ? book.update(read_status: false) : book.update(read_status: true)
-  end
+  # def read(book)
+  #   book.read_status == true ? book.update(read_status: false) : book.update(read_status: true)
+  # end
 
   def average_rating
     if Rating.find_by(book_id: self.id)
