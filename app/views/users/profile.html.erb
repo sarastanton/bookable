@@ -55,7 +55,7 @@
           <td> <%= book.page_count %> </td>
           <td>
             <% if Rating.find_by(book_id: book.id, user_id: @user.id) %>
-              <%= Rating.find_by(book_id: book.id, user_id: @user.id).content %>
+              <%= Rating.find_by(book_id: book.id, user_id: @user.id).value %>
             <% else %>
               <%= button_to "Add Rating", new_book_rating_path(book), :method => :get %>
             <% end %>
