@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
     # @book_id = @book.id
     # @user_id = helpers.current_user.id
     @review = Review.new(book_id: params[:book_id], user_id: helpers.current_user.id)
-    binding.pry
   end
 
   def create

@@ -1,5 +1,6 @@
 <h2> Add a review for <%= @book.title %>: </h2>
-
+<br />
+<h5> Note: This will also add <%= @book.title %> to your profile under "Books I Have Read" if it's not already there (because how else could you review it?!) </h5>
 <br />
 <%= form_for [@book, @review] do |f| %>
   <%= f.text_area :content, placeholder: "Enter review here" %>
