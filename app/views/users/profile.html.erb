@@ -9,7 +9,7 @@
   <th> Author </th>
   <th> Genre </th>
   <th> Page Count </th>
-  <th> Mark as Read? </th>
+  <th>  </th>
 
   <% @user.books.each do |book| %>
     <% book.read_statuses.each do |read_status| %>
@@ -19,7 +19,13 @@
           <td> <%= link_to book.author.name, author_path(book.author) %> </td>
           <td> <%= link_to book.genre.name, genre_path(book.genre) %> </td>
           <td> <%= book.page_count %> </td>
-          <td> ADD BUTTON TO MARK AS READ </td>
+          <td>
+            <%= form_tag(user_path(@user), method: :get) do %>
+              <%= hidden_field_tag "mark_as_read" %>
+              <%= hidden_field_tag "book_id", book.id %>
+              <%= submit_tag ("Mark as Read") %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     <% end %>

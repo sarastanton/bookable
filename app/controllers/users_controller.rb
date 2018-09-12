@@ -17,6 +17,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if params[:mark_as_read]
+      @book = Book.find(params[:book_id])
+      @book.mark_as_read(@user)
+    end
     render 'profile'
   end
 
