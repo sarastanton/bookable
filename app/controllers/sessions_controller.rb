@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  helper SessionsHelper
+  helper ApplicationHelper
 
   def new
     @user = User.new
@@ -6,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:user][:username] #user logs in with existing Bookable account
+    if params[:user] != nil #user logs in with existing Bookable account
       @user = User.find_by(username: params[:user][:username])
       if @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
@@ -14,9 +16,10 @@ class SessionsController < ApplicationController
       else
         render 'login'
       end
-    else #user logs in with Goodreads 
-      @user = User.find_or_create_by(uid: auth['uid']) do |u|
+    else #user logs in with Goodreads
+      @user = User.find_or_create_by(username: auth[:info][:name]) do |u|
         u.username = auth['info']['name']
+        u.password = SecureRandom.hex
       end
       session[:user_id] = @user.id
       redirect_to root_path
