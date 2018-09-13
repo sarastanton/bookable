@@ -40,7 +40,7 @@ class Book < ApplicationRecord
       self.ratings.each do |rating|
         av_rating += rating.value
       end
-      av_rating / self.ratings.count
+      "#{av_rating / self.ratings.count}/5"
     else
       "none"
     end

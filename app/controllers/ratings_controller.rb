@@ -9,6 +9,7 @@ class RatingsController < ApplicationController
     @book = Book.find(params[:book_id])
     @user = User.find(helpers.current_user.id)
     @rating = Rating.create(rating_params)
+    binding.pry
     redirect_to user_path(@user)
   end
 
