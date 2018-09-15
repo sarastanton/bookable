@@ -1,3 +1,7 @@
 <h1> Add a Book: </h1>
 
 <%= render partial: 'book_form', locals: {book: @book, author: @book.author, page_count: @book.page_count, genre: @book.genre} %>
+
+<br />
+<br />
+<%= render partial: "layouts/errors", locals: {object: @book} %>

@@ -3,9 +3,6 @@
 <br />
 <br />
 
-
-<!-- source: https://codepen.io/lsirivong/pen/ekBxI -->
-
 <%= form_for [@book, @rating] do |f| %>
 Hated it. -------
 
@@ -32,3 +29,7 @@ Hated it. -------
 
 <%= f.submit "Save Rating" %>
 <% end %>
+
+<br />
+<br />
+<%= render partial: "layouts/errors", locals: {object: @rating} %>

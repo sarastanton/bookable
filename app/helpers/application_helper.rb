@@ -8,4 +8,6 @@ module ApplicationHelper
     session[:user_id] != nil
   end
 
+
+
 end

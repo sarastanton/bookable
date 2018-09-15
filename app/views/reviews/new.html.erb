@@ -9,3 +9,5 @@
   <br />
   <%= f.submit "Save review" %>
 <% end %>
+
+<%= render partial: "layouts/errors", locals: {object: @review} %>

@@ -1,3 +1,5 @@
 <h1> Add a Genre: </h1>
 
 <%= render partial: 'genre_form', locals: {genre: @genre} %>
+
+<%= render partial: "layouts/errors", locals: {object: @genre} %>
