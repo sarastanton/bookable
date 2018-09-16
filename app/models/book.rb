@@ -34,9 +34,14 @@ class Book < ApplicationRecord
     self.genre ? self.genre.name : nil
   end
 
-  # def read(book)
-  #   book.read_status == true ? book.update(read_status: false) : book.update(read_status: true)
+  # def self.has_been_read(user)
+  #   user.books.each do |book|
+  #     book.read_statuses.each do |read_status|
+  #       read_status where(user_id: user.id, value: true)
+  #     end
+  #   end
   # end
+
 
   def average_rating
     if Rating.find_by(book_id: self.id)

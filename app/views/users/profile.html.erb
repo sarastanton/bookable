@@ -56,15 +56,15 @@
           <td> <%= link_to book.genre.name, genre_path(book.genre) %> </td>
           <td> <%= book.page_count %> </td>
           <td>
-            <% if Rating.find_by(book_id: book.id, user_id: @user.id) %>
-              <%= Rating.find_by(book_id: book.id, user_id: @user.id).value %>/5
+            <% if !Rating.my_ratings(book, @user).empty? %>
+              <%= Rating.my_ratings(book, @user).first.value %>/5
             <% else %>
               <%= button_to "Add Rating", new_book_rating_path(book), :method => :get %>
             <% end %>
           </td>
           <td>
-            <% if Review.find_by(book_id: book.id, user_id: @user.id) %>
-              <%= Review.find_by(book_id: book.id, user_id: @user.id).content %>
+            <% if !Review.my_reviews(book, @user).empty? %>
+              <%= Review.my_reviews(book, @user).first.content %>
             <% else %>
               <%= button_to "Add Review", new_book_review_path(book), :method => :get %>
             <% end %>

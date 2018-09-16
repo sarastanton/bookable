@@ -7,4 +7,8 @@ class Rating < ApplicationRecord
   belongs_to :user
   belongs_to :book
 
+  def self.my_ratings(book, user)
+    where(book_id: book.id, user_id: user.id)
+  end
+
 end
