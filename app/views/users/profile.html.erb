@@ -13,6 +13,7 @@
   <th> Page Count </th>
   <th>  </th>
 
+  <!-- NEEDS DRY REFACTORING -->
   <% @user.books.each do |book| %>
     <% book.read_statuses.each do |read_status| %>
       <% if read_status.user_id == @user.id && read_status.value == false %>
@@ -47,6 +48,7 @@
   <th> My Rating </th>
   <th> My Review </th>
 
+  <!-- NEEDS DRY REFACTORING -->
   <% @user.books.each do |book| %>
     <% book.read_statuses.each do |read_status| %>
       <% if read_status.user_id == @user.id && read_status.value == true %>
