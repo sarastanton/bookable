@@ -36,13 +36,25 @@
    border-color: grey;
  }
 
- .navbar {
+.navbar {
    background-color: rgb(52, 35, 22);
    font: rgb(249, 247, 244);
 }
 
-.navbar-brand > a:hover {
-  color: rgb(52, 35, 22);
+.navbar-brand a {
+  color: #9d9d9d;
+  text-decoration: none;
+}
+
+.navbar-brand a:visited {
+  color: #9d9d9d;
+  text-decoration: none;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+ background-color: transparent;
+ color: #9d9d9d;
 }
 
  a {
