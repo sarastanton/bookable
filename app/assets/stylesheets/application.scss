@@ -18,21 +18,48 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- body {
+ body:not(.button_to) {
    padding-top: 70px;
    padding-bottom: 30px;
+   background-color: rgb(243, 241, 235)
  }
 
  .table {
-     width: 100%;
-     max-width: 100%;
-     margin-bottom: 20px;
-     background-color: transparent;
-     border-collapse: collapse;
-     border-spacing: 0;
-     box-sizing: border-box;
-     display: table;
-     border-color: grey;
+   width: 100%;
+   max-width: 100%;
+   margin-bottom: 20px;
+   background-color: transparent;
+   border-collapse: collapse;
+   border-spacing: 0;
+   box-sizing: border-box;
+   display: table;
+   border-color: grey;
+ }
+
+ .navbar {
+   background-color: rgb(52, 35, 22);
+   font: rgb(249, 247, 244);
+}
+
+.navbar-brand > a:hover {
+  color: rgb(52, 35, 22);
+}
+
+ a {
+   color: rgb(52, 35, 22);
+   text-decoration: underline;
+ }
+
+ a:active {
+   color: rgb(52, 35, 22);
+ }
+
+ a:visited {
+   color: rgb(52, 35, 22);
+ }
+
+ a:hover {
+   color: rgb(52, 35, 22);
  }
 
  .theme-dropdown .dropdown-menu {
