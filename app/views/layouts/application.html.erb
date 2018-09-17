@@ -13,7 +13,7 @@
           <div class="navbar-brand">
             <% if logged_in? %>
             <%= link_to "Home", root_url %>
-              <%= link_to "| My Books", user_path(current_user) %>
+              <%= link_to " My Books", user_path(current_user) %>
             <% end %>
           </div>
         </div>
