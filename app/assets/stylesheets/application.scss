@@ -126,9 +126,20 @@
 }
 
 .login_status {
-  right: 20px;
+  color: #9d9d9d;
+  text-align: right;
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
   height: 50px;
+}
+
+.login_status a {
+  color: #9d9d9d;
+  text-align: right;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+  text-decoration: none;
 }

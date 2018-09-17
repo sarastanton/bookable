@@ -12,21 +12,19 @@
         <div class="navbar-header">
           <div class="navbar-brand">
             <% if logged_in? %>
-            <%= link_to "Home  |", root_url %>
-              <%= link_to " My Books  |", user_path(current_user) %>
+            <%= link_to "Home", root_url %>
+              <%= link_to "| My Books", user_path(current_user) %>
             <% end %>
-            <div class="login_status">
-              <%= login_status_display %>      |
-              <% if logged_in? %>
-                <%= link_to " Log Out  |", logout_path, method: :post %>
-              <% end %>
-            </div>
           </div>
         </div>
+        <div class="login_status">
+            <%= login_status_display %>
+            <% if logged_in? %>
+              <%= link_to "Log Out", logout_path, method: :post %>
+            <% end %>
+        </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
 
-          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
