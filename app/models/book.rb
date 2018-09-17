@@ -37,13 +37,31 @@ class Book < ApplicationRecord
     self.genre ? self.genre.name : nil
   end
 
-  # def self.has_been_read(user)
-  #   user.books.each do |book|
-  #     book.read_statuses.each do |read_status|
-  #       read_status where(user_id: user.id, value: true)
-  #     end
-  #   end
-  # end
+  def self.my_read_books(user)
+    read_books = []
+    user.books.each do |book|
+      @book = book
+      book.read_statuses.each do |read_status|
+        @read_status = read_status
+        if read_status.user_id == user.id && read_status.value == true
+          read_books << book
+        end
+      end
+    end
+    read_books
+  end
+
+  def self.my_unread_books(user)
+    unread_books = []
+    user.books.each do |book|
+      book.read_statuses.each do |read_status|
+        if read_status.user_id == user.id && read_status.value == false
+          unread_books << book
+        end
+      end
+    end
+    unread_books
+  end
 
 
   def average_rating
