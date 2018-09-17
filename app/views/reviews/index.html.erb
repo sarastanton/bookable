@@ -10,6 +10,9 @@
   <% @reviews.each do |review| %>
     <li> <%= review.user.username%> wrote: "<%= review.content %>" </li>
     <br />
+    <% if review.user == current_user %>
+      <%= button_to "Edit Review", edit_book_review_path(@book, review), :method => :get %>
+    <% end %>
   <% end %>
 </ul>
 

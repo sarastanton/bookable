@@ -1,1 +1,3 @@
-This is the rating edit form
+<h2> Edit your rating for <%= @book.title %> by <%= @book.author.name %> </h2>
+
+<%= render partial: "rating_form", locals: {book: @book, rating: @rating} %>

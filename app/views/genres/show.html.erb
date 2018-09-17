@@ -1,8 +1,10 @@
 <h1> <%= @genre.name %> </h1>
-
+<br />
 <ul>
   <% @genre.books.each do |book| %>
     <li> <%= link_to "#{book.title}", book_path(book) %> by <%= link_to "#{book.author.name}", author_path(book.author) %> </li>
     <br />
   <% end %>
 </ul>
+
+<%= button_to "Edit Genre Details", edit_genre_path(@genre), :method => :get %>

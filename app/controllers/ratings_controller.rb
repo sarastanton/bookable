@@ -2,6 +2,8 @@ class RatingsController < ApplicationController
 
   include ApplicationHelper
   before_action :require_login
+  before_action :find_book
+  before_action :find_user
 
   def new
     @rating = Rating.new(book_id: params[:book_id], user_id: helpers.current_user.id)
@@ -17,6 +19,25 @@ class RatingsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @rating = Rating.find(params[:id])
+    if @rating.user == current_user
+      render 'edit'
+    else
+      redirect_to user_path(@user)
+    end
+
+  end
+
+  def update
+    @rating = Rating.find(params[:id])
+      if @rating.update(rating_params)
+        redirect_to book_ratings_path(@book)
+      else
+        render 'edit'
+      end
   end
 
   private

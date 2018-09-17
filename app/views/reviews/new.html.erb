@@ -1,13 +1,9 @@
 <h2> Add a review for <%= @book.title %>: </h2>
 <br />
-<h5> Note: This will also add <%= @book.title %> to your profile under "Books I Have Read" if it's not already there (because how else could you review it?!) </h5>
+<p> <strong> Note: </strong> This will also add <%= @book.title %> to your profile under "Books I Have Read" if it's not already there (because how else could you review it?!) </p>
 <br />
-<%= form_for [@book, @review] do |f| %>
-  <%= f.text_area :content, placeholder: "Enter review here" %>
-  <%= f.hidden_field :user_id %>
-  <%= f.hidden_field :book_id %>
-  <br />
-  <%= f.submit "Save review" %>
-<% end %>
+<%= render partial: "review_form", locals: {review: @review, book: @book} %>
+
+<br />
 
 <%= render partial: "layouts/errors", locals: {object: @review} %>

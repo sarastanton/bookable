@@ -12,6 +12,8 @@
   <th> Genre </th>
   <th> Page Count </th>
   <th>  </th>
+  <th>  </th>
+  <th>  </th>
 
   <!-- NEEDS DRY REFACTORING -->
   <% @user.books.each do |book| %>
@@ -45,8 +47,8 @@
   <th> Author </th>
   <th> Genre </th>
   <th> Page Count </th>
-  <th> My Rating </th>
-  <th> My Review </th>
+  <th> My Rating (click to edit) </th>
+  <th> My Review (click to edit) </th>
 
   <!-- NEEDS DRY REFACTORING -->
   <% @user.books.each do |book| %>
@@ -59,14 +61,14 @@
           <td> <%= book.page_count %> </td>
           <td>
             <% if !Rating.my_ratings(book, @user).empty? %>
-              <%= Rating.my_ratings(book, @user).first.value %>/5
+              <%= link_to "#{Rating.my_ratings(book, @user).first.value}/5", edit_book_rating_path(book, Rating.my_ratings(book, @user).first) %>
             <% else %>
               <%= button_to "Add Rating", new_book_rating_path(book), :method => :get %>
             <% end %>
           </td>
           <td>
             <% if !Review.my_reviews(book, @user).empty? %>
-              <%= Review.my_reviews(book, @user).first.content %>
+              <%= link_to Review.my_reviews(book, @user).first.content, edit_book_review_path(book, Review.my_reviews(book, @user).first)%>
             <% else %>
               <%= button_to "Add Review", new_book_review_path(book), :method => :get %>
             <% end %>

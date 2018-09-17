@@ -120,3 +120,7 @@
 .error_message h3 {
  color: red;
 }
+
+.field_with_errors input[type="text"] {
+  border: 1px solid red;
+}

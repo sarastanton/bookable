@@ -1,1 +1,8 @@
-This is the review edit form
+<h2> Edit your review for <%= @book.title %>: </h2>
+<br />
+<%= render partial: "review_form", locals: {review: @review, book: @book} %>
+
+<br />
+<br />
+<%= button_to "Delete review", book_review_path(@book, @review), {method: :delete} %>
+<%= render partial: "layouts/errors", locals: {object: @review} %>

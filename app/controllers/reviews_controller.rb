@@ -2,17 +2,15 @@ class ReviewsController < ApplicationController
 
   include ApplicationHelper
   before_action :require_login
+  before_action :find_book
+  before_action :find_user
+
 
   def new
-    @book = Book.find(params[:book_id])
-    # @book_id = @book.id
-    # @user_id = helpers.current_user.id
     @review = Review.new(book_id: params[:book_id], user_id: helpers.current_user.id)
   end
 
   def create
-    @book = Book.find(params[:book_id])
-    @user = User.find(helpers.current_user.id)
     @review = Review.create(review_params)
     if @review.save
       @book.add_to_my_books(@user)
@@ -25,9 +23,7 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @user = User.find(helpers.current_user.id)
     @reviews = Review.where(book_id: params[:book_id])
-    @book = Book.find(params[:book_id])
   end
 
   def show
@@ -36,20 +32,29 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    if @review.user == current_user
+      render 'edit'
+    else
+      redirect_to book_reviews_path(@book)
+    end
+
   end
 
   def update
     @review = Review.find(params[:id])
-      if @review.upate(review_params)
-        redirect_to review_path(@review)
+      if @review.update(review_params)
+        redirect_to book_reviews_path(@book)
       else
         render 'edit'
       end
   end
 
   def destroy
-    @review = Review.find(params[:id])
-    @review.destroy
+    if @review.user == current_user
+      @review = Review.find(params[:id])
+      @review.destroy
+    end
+    redirect_to book_reviews_path(@book)
   end
 
 
