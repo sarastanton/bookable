@@ -103,9 +103,6 @@
    text-align: left;
  }
 
- #error_message {
-  color: red;
-}
 
  h1,
  h2,
@@ -114,4 +111,12 @@
  h5,
  h6 {
   color: rgb(52, 35, 22);
+}
+
+.error_message {
+ color: red;
+}
+
+.error_message h3 {
+ color: red;
 }

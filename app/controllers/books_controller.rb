@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
 
+  include ApplicationHelper
+  before_action :require_login
+
   def new
     @book = Book.new
   end

@@ -1,6 +1,12 @@
 class SessionsController < ApplicationController
-  helper SessionsHelper
-  helper ApplicationHelper
+
+  include SessionsHelper
+  include ApplicationHelper
+  include ApplicationHelper
+
+  before_action :require_login
+  skip_before_action :require_login, only: [:new, :create, :index]
+
 
   def new
     @user = User.new

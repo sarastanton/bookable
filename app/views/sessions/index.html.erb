@@ -12,3 +12,10 @@
   <h2> <%= link_to "Sign In", login_path %> </h2>
   <br />
 <% end %>
+
+<br />
+<br />
+
+<div class="error_message">
+  <h3> <%= flash[:message] %> </h3>
+</div>

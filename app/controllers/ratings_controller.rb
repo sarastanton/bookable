@@ -1,5 +1,8 @@
 class RatingsController < ApplicationController
 
+  include ApplicationHelper
+  before_action :require_login
+
   def new
     @rating = Rating.new(book_id: params[:book_id], user_id: helpers.current_user.id)
     @book = Book.find(params[:book_id])

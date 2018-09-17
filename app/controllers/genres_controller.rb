@@ -1,5 +1,8 @@
 class GenresController < ApplicationController
 
+  include ApplicationHelper
+  before_action :require_login
+
   def new
     @genre = Genre.new
   end

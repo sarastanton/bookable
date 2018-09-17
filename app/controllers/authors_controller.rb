@@ -1,4 +1,8 @@
 class AuthorsController < ApplicationController
+
+  include ApplicationHelper
+  before_action :require_login
+
   def new
     @author = Author.new
   end
