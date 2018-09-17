@@ -1,7 +1,10 @@
 class Book < ApplicationRecord
 
   validates :title, presence: true
+  validates :title, uniqueness: true
   validates :page_count, presence: true
+  validates :author_name, presence: true
+  validates :genre_name, presence: true
 
   belongs_to :author
   belongs_to :genre
