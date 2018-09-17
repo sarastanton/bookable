@@ -9,8 +9,12 @@ class SessionsController < ApplicationController
 
 
   def new
-    @user = User.new
-    render 'login'
+    if !logged_in?
+      @user = User.new
+      render 'login'
+    else
+      redirect_to root_path
+    end
   end
 
   def create
