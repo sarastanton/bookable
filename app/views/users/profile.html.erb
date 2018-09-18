@@ -53,7 +53,7 @@
       <td> <%= book.page_count %> </td>
       <td>
         <% if !Rating.my_ratings(book, @user).empty? %>
-          <%= link_to "#{Rating.my_ratings(book, @user).first.value}/5", edit_book_rating_path(book, Rating.my_ratings(book, @user).first) %>
+          <%= link_to "#{Rating.my_ratings(book, @user).first.value.to_f.round(1)} / 5.0", edit_book_rating_path(book, Rating.my_ratings(book, @user).first) %>
         <% else %>
           <%= button_to "Add Rating", new_book_rating_path(book), :method => :get %>
         <% end %>

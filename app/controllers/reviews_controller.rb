@@ -13,8 +13,10 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.create(review_params)
     if @review.save
-      @book.add_to_my_books(@user)
-      @book.mark_as_read(@user)
+      if ReadStatus.find_by(user_id: @user.id, book_id: @book.id) == nil
+        @book.add_to_my_books(@user)
+        @book.mark_as_read(@user)
+      end
       redirect_to book_reviews_path(@book)
     else
       render 'new'

@@ -63,14 +63,14 @@ class Book < ApplicationRecord
     unread_books
   end
 
-
   def average_rating
     if Rating.find_by(book_id: self.id)
       av_rating = 0
       self.ratings.each do |rating|
         av_rating += rating.value
       end
-      "#{av_rating / self.ratings.count}/5"
+      result = av_rating.to_f / self.ratings.count
+      "#{result.round(1)} / 5.0"
     else
       "none"
     end
@@ -90,7 +90,7 @@ class Book < ApplicationRecord
   end
 
   def mark_as_read(user)
-    @read_status = ReadStatus.find_or_create_by(book_id: self.id, user_id: user.id)
+    @read_status = ReadStatus.find_by(book_id: self.id, user_id: user.id)
     @read_status.value = true
     @read_status.save
     user.update(pages_read: user.pages_read + self.page_count)
