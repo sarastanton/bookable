@@ -24,8 +24,8 @@ At the time of this writing (September 2018), the Goodreads API requires an HTTP
 
   2) Create a file within the root directory of the application called **.env** that contains the following two lines:
 
-    GOODREADS_KEY=[insert key from Goodreads here]
-    GOODREADS_SECRET=[insert secret from Goodreads here]
+    GOODREADS_KEY=[insert key from Goodreads here, without brackets]
+    GOODREADS_SECRET=[insert secret from Goodreads here, without brackets]
 
   _If you are going to save your project to version control and/or push to a publicly visible repository, you can add the **.env** file to **.gitignore** so that it is not made public._
 
