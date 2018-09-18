@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 
-Bookable is a Ruby on Rails application that lets users create a list of books (including author, genre, and page count) that they either have or would like to read. Users can also track the number of pages they have read, as well as leave ratings and reviews for books they have read. Users can create an account through a traditional signup form, or sign in with an existing Goodreads account.
+Bookable is a Ruby on Rails application that lets users create a list of books (including author, genre, and page count) that they either have or would like to read. Users can also track the number of pages they have read, as well as leave ratings and reviews for books they have read. Users can create an account through a traditional signup form, or log in with an existing Goodreads account.
 
 ## INSTALLATION
 
@@ -27,7 +27,7 @@ At the time of this writing (September 2018), the Goodreads API requires an HTTP
     GOODREADS_KEY=[insert key from Goodreads here]
     GOODREADS_SECRET=[insert secret from Goodreads here]
 
-  _If you are going to save your project to version control and/or push to a publicly visible repository, you can add this **.env** file to **.gitignore** so that it is not made public._
+  _If you are going to save your project to version control and/or push to a publicly visible repository, you can add the **.env** file to **.gitignore** so that it is not made public._
 
   3) Once you have updated the gem and added your **.env** file with your own individual developer key and secret from Goodreads, use  ```thin start --ssl ``` to preview the application in your browser with an HTTPS connection.
 
