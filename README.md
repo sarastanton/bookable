@@ -9,14 +9,14 @@ Bookable is a Ruby on Rails application that lets users create a list of books (
 Clone or download this repository and run ```bundle install``` to install the gems necessary for this application. Run ```rake db:migrate``` to create database tables and ```rake db:seed``` to load seed data into the database. Preview the application in your web browser using ```rails s```.
 
 ## GOODREADS OMNIAUTH
-**NOTE ON GOODREADS OMNIAUTH LOGIN:** The "login with Goodreads" feature on the application's login and signup pages will NOT work out of the box. This is because a developer key is required, and I am not going to publicly post my individual developer key. If you would like to configure the application to get the Goodreads login working, you will need to perform two steps: 1) update the omniauth-goodreads2 gem to
+**NOTE ON GOODREADS OMNIAUTH LOGIN:** The "login with Goodreads" feature on the application's login and signup pages will NOT work out of the box. This is because a Goodreads API developer key is required, and I am not going to publicly post my individual developer key. If you would like to configure the application to get the Goodreads login working, you will need to perform two steps: 1) update the omniauth-goodreads2 gem to use an HTTPS connection, and 2) enter in your own Goodreads API developer key and secret. Here's how:
 
 ### UPDATE GEM
 At the time of this writing (September 2018), the Goodreads API requires an HTTPS connection, and the omniauth-goodreads2 gem (version 0.1.1 at the time of this writing) has not been updated to work with HTTPS. You can update your local copy of the gem as follows:
 
   1) After running ```bundle install``` to install the gems required for this application, run``` gem open omniauth-goodreads2``` to open the source code for the omniauth-goodreads2 gem in your text editor.
 
-  2) Open the file lib/omniauth/strategies/goodreads2.rb and change every instance of "http" to "https". In version 0.1.1, there are 3 instances (on lines 8-10).
+  2) Open the file *lib/omniauth/strategies/goodreads2.rb* and change every instance of "http" **in this specific file** to "https". In version 0.1.1, there are 3 instances (lines 8-10).
 
 ### CONFIGURE DEVELOPER KEY
 
