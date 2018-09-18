@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   include ApplicationHelper
+  include UsersHelper
+
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create]
 
@@ -29,10 +31,12 @@ class UsersController < ApplicationController
       @book = Book.find(params[:book_id])
       @book.mark_as_read(@user)
     end
+    pages_read_by_user(@user)
     render 'profile'
   end
 
   def index
+
   end
 
   private
