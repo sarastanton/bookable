@@ -27,7 +27,7 @@ At the time of this writing (September 2018), the Goodreads API requires an HTTP
     GOODREADS_KEY=[insert key from Goodreads here]
     GOODREADS_SECRET=[insert secret from Goodreads here]
 
-    *If you are going to save your project to version control and/or push to a publicly visible repository, you can add this* **.env** *file to* **.gitignore** *so that it is not made public.*
+  *If you are going to save your project to version control and/or push to a publicly visible repository, you can add this* **.env** *file to* **.gitignore** *so that it is not made public.*
 
   3) Once you have updated the gem and added your **.env** file with your own individual developer key and secret from Goodreads, use  ```thin start --ssl ``` to preview the application in your browser with an HTTPS connection.
 
