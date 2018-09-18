@@ -15,14 +15,28 @@ module ApplicationHelper
     end
   end
 
-  def find_book
+  def find_book_in_params
     if params[:book_id] != nil
       @book = Book.find(params[:book_id])
+    elsif params[:id] != nil
+      @book = Book.find(params[:id])
     end
   end
 
+  def find_author_in_params
+    if params[:author_id] != nil
+      @author = Author.find(params[:author_id])
+    elsif params[:id] != nil
+      @author = Author.find(params[:id])
+    end
+  end
+
+  def find_genre_in_params
+    @genre = Genre.find(params[:id]) if params[:id] != nil
+  end
+
   def find_user
-    @user = User.find(helpers.current_user.id)
+    @user = current_user
   end
 
 end

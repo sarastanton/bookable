@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
   include ApplicationHelper
   before_action :require_login
-  before_action :find_book
+  before_action :find_book_in_params
   before_action :find_user
 
 

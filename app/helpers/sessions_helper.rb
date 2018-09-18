@@ -9,4 +9,16 @@ module SessionsHelper
 		end
 	end
 
+  def login_with_bookable
+    @user = User.find_by(username: params[:user][:username])
+    render 'login' unless @user.authenticate(params[:user][:password])
+  end
+
+   def login_with_goodreads
+    @user = User.find_or_create_by(username: auth[:info][:name]) do |u|
+      u.username = auth['info']['name'] + " " + auth['uid']
+      u.password = SecureRandom.hex
+    end
+  end
+
 end

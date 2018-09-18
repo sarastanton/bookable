@@ -2,6 +2,8 @@ class AuthorsController < ApplicationController
 
   include ApplicationHelper
   before_action :require_login
+  before_action :find_author_in_params
+  skip_before_action :find_author_in_params, only: [:new, :create]
 
   def new
     @author = Author.new
@@ -21,22 +23,20 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @author = Author.find(params[:id])
+
   end
 
   def edit
-    @author = Author.find(params[:id])
+
   end
 
   def update
-    @author = Author.find(params[:id])
     if @author.update(author_params)
       redirect_to author_path(@author)
     end
   end
 
   def destroy
-    @author = Author.find(params[:id])
     @author.destroy
   end
 

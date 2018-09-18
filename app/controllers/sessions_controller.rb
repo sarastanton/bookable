@@ -2,38 +2,28 @@ class SessionsController < ApplicationController
 
   include SessionsHelper
   include ApplicationHelper
-  include ApplicationHelper
 
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create, :index]
 
 
   def new
-    if !logged_in?
+    if logged_in?
+      redirect_to root_path
+    else
       @user = User.new
       render 'login'
-    else
-      redirect_to root_path
     end
   end
 
   def create
     if params[:user] != nil #user logs in with existing Bookable account
-      @user = User.find_by(username: params[:user][:username])
-      if @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to root_path
-      else
-        render 'login'
-      end
+      login_with_bookable
     else #user logs in with Goodreads
-      @user = User.find_or_create_by(username: auth[:info][:name]) do |u|
-        u.username = auth['info']['name']
-        u.password = SecureRandom.hex
-      end
-      session[:user_id] = @user.id
-      redirect_to root_path
+      login_with_goodreads
     end
+    session[:user_id] = @user.id
+    redirect_to root_path
   end
 
   def destroy

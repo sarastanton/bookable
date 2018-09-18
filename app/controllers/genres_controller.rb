@@ -2,6 +2,8 @@ class GenresController < ApplicationController
 
   include ApplicationHelper
   before_action :require_login
+  before_action :find_genre_in_params
+  skip_before_action :find_genre_in_params, only: [:new, :create]
 
   def new
     @genre = Genre.new
@@ -21,22 +23,18 @@ class GenresController < ApplicationController
   end
 
   def show
-    @genre = Genre.find(params[:id])
+
   end
 
   def edit
-    @genre = Genre.find(params[:id])
+
   end
 
   def update
-    @genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
-      redirect_to genre_path(@genre)
-    end
+    redirect_to genre_path(@genre) if @genre.update(genre_params)
   end
 
   def destroy
-    @genre = Genre.find(params[:id])
     @genre.destroy
   end
 
