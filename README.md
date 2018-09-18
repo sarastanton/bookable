@@ -21,8 +21,8 @@ At the time of this writing (September 2018), the Goodreads API requires an HTTP
 ### CONFIGURE DEVELOPER KEY
 
   1) Sign up for a developer key for the Goodreads API: https://www.goodreads.com/api/keys
-    * Application URL: https://localhost:3000/
-    * Callback URL: https://localhost:3000/auth/goodreads/callback
+     * Application URL: https://localhost:3000/
+     * Callback URL: https://localhost:3000/auth/goodreads/callback
 
   2) Create a file within the root directory of the application called **.env** that contains the following two lines:
 
