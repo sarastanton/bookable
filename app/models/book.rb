@@ -10,10 +10,8 @@ class Book < ApplicationRecord
   belongs_to :genre
 
   has_many :ratings
-  has_many :users, through: :ratings
 
   has_many :reviews
-  has_many :users, through: :reviews
 
   has_many :read_statuses
   has_many :users, through: :read_statuses
@@ -37,7 +35,6 @@ class Book < ApplicationRecord
   def self.my_read_books(user)
     read_books = []
     user.books.each do |book|
-      @book = book
       book.read_statuses.each do |read_status|
         @read_status = read_status
         if read_status.user_id == user.id && read_status.value == true
@@ -90,8 +87,6 @@ class Book < ApplicationRecord
     @read_status = ReadStatus.find_by(book_id: self.id, user_id: user.id)
     @read_status.value = true
     @read_status.save
-    user.update(pages_read: user.pages_read + self.page_count)
-    user.save
   end
 
 

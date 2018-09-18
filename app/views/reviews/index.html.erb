@@ -12,6 +12,7 @@
     <br />
     <% if review.user == current_user %>
       <%= button_to "Edit Review", edit_book_review_path(@book, review), :method => :get %>
+      <br />
     <% end %>
   <% end %>
 </ul>
