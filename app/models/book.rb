@@ -16,12 +16,6 @@ class Book < ApplicationRecord
   has_many :read_statuses
   has_many :users, through: :read_statuses
 
-  # has_many :reviews
-  # has_many :users, through: :reviews
-  #
-  # has_many :ratings
-  # has_many :users, through: :ratings
-
   def author_name=(name)
     self.author = Author.find_or_create_by(name: name)
   end
