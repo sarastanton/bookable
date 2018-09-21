@@ -25,7 +25,7 @@ RSpec.describe Book, :type => :model do
 
   let (:user) {
     User.create(
-      :username => "Fiona",
+      :username => "Gerald",
       :password => "test"
     )
   }
@@ -59,6 +59,7 @@ RSpec.describe Book, :type => :model do
     book.add_to_my_books(user)
     book.mark_as_read(user)
     read_status = ReadStatus.find_by(user_id: user.id, book_id: book.id)
+
     expect(read_status.value).to eq(true)
   end
 
