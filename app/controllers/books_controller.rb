@@ -21,7 +21,12 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all.sort_by(&:title)
+    @authors = Author.all
+    if params[:author] != ""
+      @books = Book.where(author: params[:author])
+    else
+      @books = Book.all.sort_by(&:title)
+    end
     if params[:add_to_my_books]
       @book.add_to_my_books(@user)
       render 'index'

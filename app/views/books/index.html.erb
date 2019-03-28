@@ -1,5 +1,15 @@
 <h1> All Books </h1>
 
+<%= form_tag("/books", method: "get") do %>
+  <%= select_tag "author", options_from_collection_for_select(@authors, "id", "name"), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<!-- <%= form_tag("/posts", method: "get") do %>
+   <%= select_tag "author", options_from_collection_for_select(@authors, "id", "name"), include_blank: true %>
+   <%= submit_tag "Filter" %>
+ <% end %> -->
+
 <table class="table">
   <th> Title </th>
   <th> Author </th>
